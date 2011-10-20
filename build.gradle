@@ -1,0 +1,39 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin:'application'
+
+version = '1.0-SNAPSHOT'
+group = 'com.aestas.blog'
+
+logbackVersion = "0.9.28"
+luceneVersion = "3.1.0"
+
+sourceCompatibility = '7'
+targetCompatibility = '7'
+
+mainClassName = "com.aestas.blog.forkjoin.ForkJoinApp"
+
+repositories {
+   mavenRepo urls: "http://repository.jboss.org/maven2/"
+    mavenCentral()
+}
+	
+dependencies {
+
+	compile "org.apache.lucene:lucene-core:$luceneVersion"
+	compile "org.apache.lucene:lucene-analyzers:$luceneVersion"
+    compile "com.google.guava:guava:10.0.1"
+	
+}
+
+run {
+   if ( project.hasProperty('args') ) {
+       args project.args.split('\\s+')
+   }
+}
+
+
+
+
+
+
